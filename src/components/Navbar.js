@@ -12,10 +12,10 @@ const Navbar = ({
   handleClearCart,
   price,
 }) => {
-  const [cartOpen, setCartOpen] = useState(false);
+  const [cartAbrir, setCartAbrir] = useState(false);
   const navigate = useNavigate();
   const handleCart = () => {
-    setCartOpen(!cartOpen);
+    setCartAbrir(!cartAbrir);
   };
 
   const getTotalItems = (items) =>
@@ -65,14 +65,14 @@ const Navbar = ({
       <aside>
         <div
           className={
-            cartOpen
+            cartAbrir
               ? `h-screen w-full bg-black/40 z-50 fixed right-0 top-0`
               : `hidden`
           }
         >
           <div
             className={
-              cartOpen
+              cartAbrir
                 ? `h-screen xl:w-[25%] lg:w-[30%] md:w-[40%] w-[80%] bg-white z-[60] fixed right-0 top-0 duration-200 overflow-y-auto transition-shadow`
                 : `hidden`
             }
@@ -121,7 +121,7 @@ const Navbar = ({
                   <p className="font-semibold">
                     Total: {getTotalItems(cartItems)} produtos
                     <p
-                      className="underline text-red-600 cursor-pointer"
+                      className="cursor-pointer px-4 py-2 rounded-xl bg-red-300 hover:bg-red-400 active:bg-red-500r"
                       onClick={handleClearCart}
                     >
                       Limpar o carrinho
@@ -130,7 +130,7 @@ const Navbar = ({
                   <div>
                     <div
                       onClick={() => navigate('/cart')}
-                      className="cursor-pointer px-4 py-2 rounded-xl bg-green-300 hover:bg-green-400 active:bg-green-500"
+                      className="cursor-pointer px-10 py-2 rounded-xl bg-green-300 hover:bg-green-400 active:bg-green-300"
                     >
                       <p onClick={handleCart} className="cursor-pointer">
                         Confira
@@ -140,7 +140,7 @@ const Navbar = ({
                 </div>
               </div>
             ) : (
-              'Cart is empty'
+              'carrinho vazio'
             )}
           </div>
         </div>

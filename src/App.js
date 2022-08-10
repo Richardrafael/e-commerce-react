@@ -1,10 +1,7 @@
-// React
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-// Redux
 import { getAllItems } from './slice/itemSlice';
-// Components
 import LoadState from './components/Carregando/index';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -18,7 +15,6 @@ function App() {
   const { items, loading } = useSelector((state) => state.item);
   const price = 20;
 
-  // Add To Cart
   const handleAddToCart = (clickedItem) => {
     setCartItems((prev) => {
       const isItemInCart = prev.find((item) => item.id === clickedItem.id);
@@ -33,7 +29,7 @@ function App() {
     });
   };
 
-  //Remove To Cart
+
   const handleRemoveToCart = (id) => {
     setCartItems((prev) =>
       prev.reduce((a, item) => {
@@ -46,30 +42,24 @@ function App() {
       }, [])
     );
   };
-  // Clear Cart
+  
   const clearCartHandler = () => {
     Swal.fire({
-      title: 'Clear Cart?',
-      text: "You won't be able to revert this!",
+      title: 'Tem certeza que deseja limpar seu carrinho?',
+      text: "Você vai perde todos os produtos salvos!!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, clear cart!',
+      confirmButtonText: 'sim, tenho certeza ',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Cleared!', 'Cart cleared.', 'success');
+        Swal.fire('Limpo!', 'seu carrinho esta vazio.', 'success');
         localStorage.removeItem('shopping-cart');
         setCartItems([]);
       }
     });
   };
-
-  // const logout = () => {
-  //
-  // };
-
-  // Call Redux
   useEffect(() => {
     dispatch(getAllItems());
   }, [dispatch]);
