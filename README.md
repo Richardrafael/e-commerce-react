@@ -1,4 +1,3 @@
-# Desafio Frontend frexco 
+# E commerce de frutas 
 
-tinha como objetivo construir um sistema de compras com um <br> 
-carrinho de compras em react js <br> 
+
